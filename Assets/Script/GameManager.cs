@@ -41,7 +41,9 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(instanciatedOrange);
             }
-            instanciatedOrange = Instantiate(prefabOrange,destination,new Quaternion(0f,0f,0f,100f));
+            instanciatedOrange = Instantiate(prefabOrange,destination,hit.transform.rotation);
+            //instanciatedOrange.transform.SetParent(hit.transform);
+            instanciatedOrange.transform.up = hit.normal;
         }
         if(Input.GetButtonDown("Fire2"))
         {

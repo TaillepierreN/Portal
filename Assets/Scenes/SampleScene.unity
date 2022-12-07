@@ -873,6 +873,7 @@ MonoBehaviour:
     type: 3}
   prefabBleu: {fileID: 6462316209072889552, guid: 636ebe80d689a7c4a9c1803a61e3aa66,
     type: 3}
+  teleported: 0
 --- !u!1 &1661699436
 GameObject:
   m_ObjectHideFlags: 0
