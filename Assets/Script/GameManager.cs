@@ -41,12 +41,25 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(instanciatedOrange);
             }
-            instanciatedOrange = Instantiate(prefabOrange,destination,hit.transform.rotation);
+            instanciatedOrange = Instantiate(prefabOrange,destination, Quaternion.identity);
             //instanciatedOrange.transform.SetParent(hit.transform);
             instanciatedOrange.transform.up = hit.normal;
+            Debug.Log(hit.normal);
+           /* if(hit.normal == new Vector3(-1f,0f,0f))
+            {
+
+            }*/
+            instanciatedOrange.transform.rotation = instanciatedOrange.transform.rotation  /* * new Quaternion(0f,10f,0f,0f)*/;
+
         }
         if(Input.GetButtonDown("Fire2"))
         {
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f,0.5f,0));
+            RaycastHit hit;
+            if(Physics.Raycast(ray , out hit))
+            {
+                destination = hit.point;
+            }
             if(portalBleu!=null)
             {
                 Destroy(portalBleu);
@@ -56,7 +69,8 @@ public class GameManager : MonoBehaviour
                 Debug.Log("boumbleu");
                 Destroy(insatnciatedBleu);
             }
-            insatnciatedBleu = Instantiate(prefabBleu);
+            insatnciatedBleu = Instantiate(prefabBleu, destination, Quaternion.identity);
+            insatnciatedBleu.transform.up = hit.normal;
         }
     }
 }
